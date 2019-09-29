@@ -71,6 +71,13 @@ const VendorDashboard = () => {
                                 </SectionContainer>
                             </MDBCol>
                         </MDBRow>
+                        <MDBRow>
+                            <MDBCol md="12" className="mx-auto">
+                                <SectionContainer header="Dashboard">
+                                    <Bar data={dataBar} options={barChartOptions} />
+                                </SectionContainer>
+                            </MDBCol>
+                        </MDBRow>
                     </MDBContainer>
                 </MDBAnimation>
             </MDBContainer>
