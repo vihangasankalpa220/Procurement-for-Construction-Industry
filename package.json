@@ -1,0 +1,20 @@
+{
+  "name": "procsys",
+  "version": "1.2.5",
+  "description": "project sliit",
+  "main": "Client/src/index.js",
+  "scripts": {
+    "test": "npm Client/src/App.test.js",
+    "start": "cd Client/src/ && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vihangasankalpa220/CSSE-ProjectProcureSystem-2019.git"
+  },
+  "author": "Asiri Hewage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vihangasankalpa220/CSSE-ProjectProcureSystem-2019/issues"
+  },
+  "homepage": "https://github.com/vihangasankalpa220/CSSE-ProjectProcureSystem-2019#readme"
+}
