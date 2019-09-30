@@ -23,6 +23,12 @@ import BanukaDashboard from './banuka/components/Dashboard';
 import BanukaCreate from './banuka/components/CreateInvoice'
 import BanukaViewInvoices from './banuka/components/ViewInvoices'
 
+//imports from Banuka
+import Banuka from './banuka/components/Banuka';
+import BanukaDashboard from './banuka/components/Dashboard';
+import BanukaCreate from './banuka/components/CreateInvoice'
+import BanukaViewInvoices from './banuka/components/ViewInvoices'
+
 
 
 //imports from vihanga
@@ -129,6 +135,7 @@ class Routes extends React.Component {
         <Route exact path="/banuka/dashboard" component={BanukaDashboard}></Route>
         <Route exact path="/banuka/create" component={BanukaCreate}></Route>
         <Route exact path="/banuka/view" component={BanukaViewInvoices}></Route>
+        {/* End of Routes of Banuka */}
         
 
         {/* Routes of Asiri */}
