@@ -2,6 +2,10 @@
   "name": "procurementsystem",
   "version": "0.1.1",
   "dependencies": {
+    "@csstools/normalize.css": "github:csstools/normalize.css",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.5",
     "dotenv": "latest",
     "dotenv-webpack": "^1.7.0",
     "google-map-react": "^1.0.6",
@@ -11,7 +15,6 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "@csstools/normalize.css": "github:csstools/normalize.css",
     "reactstrap": "^8.0.1"
   },
   "scripts": {
