@@ -19,9 +19,6 @@ import ViewAllVendors from "./asiri/pages/viewAllVendors";
 import ViewVendorDetails from "./asiri/pages/viewVendorDetails";
 import VendorDashboard from "./asiri/pages/vendorDashboard";
 
-import BanukaDashboard from './banuka/components/Dashboard';
-import BanukaCreate from './banuka/components/CreateInvoice'
-import BanukaViewInvoices from './banuka/components/ViewInvoices'
 
 //imports from Banuka
 import Banuka from './banuka/components/Banuka';
