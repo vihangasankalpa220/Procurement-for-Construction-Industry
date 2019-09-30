@@ -4,28 +4,28 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBMask,
-  MDBIcon,
-  MDBView,
   MDBBtn,
   MDBTable,
   MDBTableBody,
-  MDBTableHead,
-  MDBContainer
+  MDBTableHead
 } from "mdbreact";
 import { NavLink } from "react-router-dom";
 
-import GetTable from "./table";
-import GetTable2 from "./table2";
+import ItemNotSelectedWarning from './warning';
+
 
 export default class CreateInvoiceForm extends Component {
   constructor(props) {
     super(props);
+
+    this.getItemRef = React.createRef();
+
     this.state = {
       vendorName: "",
       itemID: "",
       qty: "",
-      rows: [{}]
+      rows: [{}],
+      showItemNotSelectedWarning: false
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -48,6 +48,16 @@ export default class CreateInvoiceForm extends Component {
     this.setState({
       rows: [...this.state.rows, itemDetails]
     });
+    
+    if(this.getItemRef.current.value === "1"){
+      this.setState({
+        showItemNotSelectedWarning: true
+      });
+    }else{
+      this.setState({
+        showItemNotSelectedWarning: false
+      });
+    }
   }
 
   handleRemoveSpecificRow = idx => () => {
@@ -74,7 +84,10 @@ export default class CreateInvoiceForm extends Component {
     this.setState({
       itemID: e.target.value
     });
+
+    
   }
+
 
   onSubmit(e) {
     e.preventDefault();
@@ -82,13 +95,16 @@ export default class CreateInvoiceForm extends Component {
       if(id === 0 || id ===""){
 
       }else{
-        alert(item.itemID);
+        // alert(item.itemID);
       }
     });
   }
 
+ 
+
 
   render() {
+    
     return (
       <div>
         <MDBCard className="my-12 px-12 pb-12">
@@ -233,7 +249,7 @@ export default class CreateInvoiceForm extends Component {
                     >
                       Select an Item:
                     </label>
-                    <select class="form-control" onChange={this.itemorOnChange}>
+                    <select class="form-control" onChange={this.itemorOnChange} ref={this.getItemRef}>
                       <option disabled selected value="1">
                         - Select Item -
                       </option>
@@ -261,6 +277,7 @@ export default class CreateInvoiceForm extends Component {
                     />
                   </div>
                 </MDBCol>
+                
                 <MDBCol lg="2" md="2" className="mb-lg-0 mb-2 text-center">
                   <div className="form-group">
                     <label
@@ -280,6 +297,8 @@ export default class CreateInvoiceForm extends Component {
                 </MDBCol>
               </MDBRow>
 
+             {this.state.showItemNotSelectedWarning ? <ItemNotSelectedWarning /> : <p></p>}
+              
               <MDBRow>
                 <MDBCol lg="12" md="12" className="mb-lg-0 mb-12 text-center">
                   <MDBTable
@@ -311,6 +330,7 @@ export default class CreateInvoiceForm extends Component {
                             item.itemID === null ? (
                             <tr></tr>
                           ) : (
+                            
                             <tr key={id}>
                               <td>{item.itemID}</td>
                               <td>{item.itemID}</td>
@@ -321,6 +341,7 @@ export default class CreateInvoiceForm extends Component {
                               )}
                               <td>{item.unitPrice}</td>
                               <td>{item.linePrice}</td>
+                              
                               <MDBBtn
                                 onClick={this.handleRemoveSpecificRow(id)}
                                 color="red"
@@ -328,6 +349,7 @@ export default class CreateInvoiceForm extends Component {
                                 <i className="fa fa-trash"></i>
                               </MDBBtn>
                             </tr>
+                            
                           )
                         )
                       ) : (
@@ -361,7 +383,6 @@ export default class CreateInvoiceForm extends Component {
               </MDBRow>
             </form>
 
-            <GetTable2 />
             {/* form ends here */}
           </MDBCardBody>
         </MDBCard>
