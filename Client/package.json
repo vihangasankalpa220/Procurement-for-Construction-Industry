@@ -2,15 +2,16 @@
   "name": "procurementsystem",
   "version": "0.1.1",
   "dependencies": {
+    "@csstools/normalize.css": "github:csstools/normalize.css",
     "dotenv": "latest",
     "dotenv-webpack": "^1.7.0",
+    "google-map-react": "^1.0.6",
     "mdbreact": "4.19.1",
     "react": "^16.8.6",
     "react-chartjs-2": "latest",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "google-map-react": "^1.0.6"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
