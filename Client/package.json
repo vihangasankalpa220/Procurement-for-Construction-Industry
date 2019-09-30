@@ -2,6 +2,8 @@
   "name": "procurementsystem",
   "version": "0.1.1",
   "dependencies": {
+    "axios": "^0.18.0",
+    "jwt-decode": "^2.2.0",
     "dotenv": "latest",
     "dotenv-webpack": "^1.7.0",
     "mdbreact": "4.19.1",
@@ -19,7 +21,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "axios": "^0.19.0",
     "renamer": "^1.0.0",
     "rimraf": "^2.6.2"
   },
