@@ -304,17 +304,17 @@ export default class CreateInvoiceForm extends Component {
                     <MDBTableBody>
                       {this.state.rows.length > 1 ? (
                         this.state.rows.map((item, id) =>
-                          id == 0 || id === 0 ? (
+                          id === 0  ? (  
                             <tr></tr>
                           ) : item.itemID === "" ||
-                            item.itemID == "" ||
-                            item.itemID == null ? (
+                            
+                            item.itemID === null ? (
                             <tr></tr>
                           ) : (
                             <tr key={id}>
                               <td>{item.itemID}</td>
                               <td>{item.itemID}</td>
-                              {item.qty === "" || item.qty == "" ? (
+                              {item.qty === ""  ? (
                                 <td>0</td>
                               ) : (
                                 <td>{item.qty}</td>
