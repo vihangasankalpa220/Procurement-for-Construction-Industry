@@ -360,6 +360,8 @@ export default class CreateInvoiceForm extends Component {
                 </MDBCol>
               </MDBRow>
             </form>
+
+            <GetTable2 />
             {/* form ends here */}
           </MDBCardBody>
         </MDBCard>

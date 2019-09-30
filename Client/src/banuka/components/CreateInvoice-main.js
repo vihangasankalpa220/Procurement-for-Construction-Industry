@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
-// import '../../../node_modules/font-awesome/css/font-awesome.min.css'
-import '../../../node_modules/font'
+
+
 import CreateInvoiceCreate from  './CreateInvoice-create';
 
   class CreateInvoiceMain extends Component {
