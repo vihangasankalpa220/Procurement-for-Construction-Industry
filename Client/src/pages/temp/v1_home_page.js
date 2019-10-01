@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   MDBEdgeHeader,
@@ -28,13 +29,13 @@ const V1HomePage = () => {
                     <MenuLink to="/vendor/add" title="Add Vendor" />
                     <MenuLink to="/vendor/all" title="View All Vendors" />
                     <MenuLink to="/vendor/update" title="Update Vendor" />
-                    <MenuLink to="/vendor/details/1" title="View One Vendor" />
+                    <MenuLink to="/vendor/details" title="View One Vendor" />
                     <MenuLink to="/vendor/dashboard" title="Dashboard" />
                     <MenuLink to="/vendor/reporting" title="Reporting" />
                     
                     {/*Purchase Invoices*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Invoices - Jananath</strong></h6>
-                    <MenuLink to="/banuka/dashboard" title="Purchase Invoices" />
+                    <MenuLink to="/css/animations" title="xxx Management" />
 
                     {/*Purchase Requisition*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Requisition - Chinthaka</strong></h6>
@@ -42,7 +43,12 @@ const V1HomePage = () => {
 
                     {/*Purchase Orders*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Orders - Vihanga</strong></h6>
-                    <MenuLink to="/css/animations" title="xxx Management" />
+                    <MenuLink to="/orders/addorders" title="Add Orders" />
+                    <MenuLink to="/stocks/addstocks" title="Add Stocks" />
+                    <MenuLink to="/index/stocks" title="View Stocks" />
+                    <MenuLink to="/edit/:id" title="Edit Orders" />
+                    <MenuLink to="/edits/:id" title="Edit Stocks" />
+                    <MenuLink to="/index" title="View Orders" />
 
                   </ul>
                 </MDBJumbotron>
@@ -55,3 +61,4 @@ const V1HomePage = () => {
 };
 
 export default V1HomePage;
+

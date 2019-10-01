@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 
 //add dummy data set
 let data = require('../dummyData/dataSet');
