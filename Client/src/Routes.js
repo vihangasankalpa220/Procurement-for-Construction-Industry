@@ -118,6 +118,7 @@ class Routes extends React.Component {
 
 
 
+        {/* FREE */}
         <Route exact path="/" component={HomePage} />
         <Route exact path="/addons" component={AddonsNavPage} />
         <Route exact path="/advanced" component={AdvancedNavPage} />
@@ -127,9 +128,6 @@ class Routes extends React.Component {
         <Route exact path="/modals" component={ModalsNavPage} />
         <Route exact path="/navigation" component={NavigationNavPage} />
         <Route exact path="/tables" component={TablesNavPage} />
-
-
-        {/* FREE */}
         <Route path="/addons/iframe" component={IframePage} />
         <Route path="/addons/edge-header" component={EdgeHeaderPage} />
         <Route path="/addons/notifications" component={NotificationPage} />
