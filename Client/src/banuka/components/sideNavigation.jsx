@@ -7,9 +7,10 @@ import { NavLink } from 'react-router-dom';
 
 const TopNavigation = () => {
     return (
-        <div className="sidebar-fixed position-fixed">
+        // <div className="sidebar-fixed position-fixed">
+        <div  className="sidebar-fixed position-fixed">
             <a href="#!" className="logo-wrapper waves-effect">
-            <img alt="MDB React Logo" className="img-fluid" src={logo}/>
+            <img style={{marginTop:"50px"}} alt="MDB React Logo" className="img-fluid" src={logo}/>
                 {/* <h5>Procument System - Purchase Invoices</h5> */}
             </a>
             <MDBListGroup className="list-group-flush">

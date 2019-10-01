@@ -2,17 +2,20 @@
   "name": "procurementsystem",
   "version": "0.1.1",
   "dependencies": {
-    "axios": "^0.18.0",
-    "jwt-decode": "^2.2.0",
+    "@csstools/normalize.css": "github:csstools/normalize.css",
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.5",
     "dotenv": "latest",
     "dotenv-webpack": "^1.7.0",
+    "google-map-react": "^1.0.6",
     "mdbreact": "4.19.1",
-    "react": "^16.8.6",
+    "react": "^16.10.1",
     "react-chartjs-2": "latest",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.10.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "google-map-react": "^1.0.6"
+    "reactstrap": "^8.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,6 +24,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "axios": "^0.19.0",
     "renamer": "^1.0.0",
     "rimraf": "^2.6.2"
   },
