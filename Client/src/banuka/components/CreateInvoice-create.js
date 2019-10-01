@@ -13,6 +13,14 @@ import { NavLink } from "react-router-dom";
 
 import ItemNotSelectedWarning from './warning';
 
+const styles = {
+  error:{
+    border: '1px solid red'
+  },
+  notError:{
+    border: ''
+  }
+}
 
 export default class CreateInvoiceForm extends Component {
   constructor(props) {
@@ -25,8 +33,15 @@ export default class CreateInvoiceForm extends Component {
       itemID: "",
       qty: "",
       rows: [{}],
-      showItemNotSelectedWarning: false
+      showItemNotSelectedWarning: false,
+      address: "",
+      contactPerson: "",
+      invoiceDate: "",
+      expectedDate: "",
+      isValidated: false
     };
+
+    
 
     this.onSubmit = this.onSubmit.bind(this);
     this.vendorOnChange = this.vendorOnChange.bind(this);
@@ -36,6 +51,7 @@ export default class CreateInvoiceForm extends Component {
     this.handleRemoveSpecificRow = this.handleRemoveSpecificRow.bind(this);
   }
 
+  // Add
   onHandleAddRow() {
     const itemDetails = {
       itemID: this.state.itemID,
@@ -60,6 +76,7 @@ export default class CreateInvoiceForm extends Component {
     }
   }
 
+  // delete
   handleRemoveSpecificRow = idx => () => {
     const rows = [...this.state.rows];
     rows.splice(idx, 1);
@@ -67,11 +84,13 @@ export default class CreateInvoiceForm extends Component {
   };
 
  
+  //vendor
   vendorOnChange(e) {
     this.setState({
       vendorName: e.target.value
     });
   }
+
 
   quantityOnChange(e) {
     const re = /^[0-9\b]+$/;
@@ -84,8 +103,6 @@ export default class CreateInvoiceForm extends Component {
     this.setState({
       itemID: e.target.value
     });
-
-    
   }
 
 
@@ -93,14 +110,26 @@ export default class CreateInvoiceForm extends Component {
     e.preventDefault();
     this.state.rows.map((item, id) => {
       if(id === 0 || id ===""){
-
+        
       }else{
-        // alert(item.itemID);
+        
       }
     });
   }
 
- 
+  validateFields(){
+
+    const vendorName = this.state.vendorName;
+    const invoiceDate = this.state.invoiceDate;
+    const expectedDate = this.state.expectedDate;
+    const address = this.state.address;
+    const contactPerson = this.state.contactPerson;
+    const itemID = this.state.itemID;
+    const rowCount = this.state.rows.length; //should be greater than 1
+
+
+
+  }
 
 
   render() {
@@ -135,6 +164,7 @@ export default class CreateInvoiceForm extends Component {
                     type="text"
                     id="defaultFormRegisterNameEx"
                     className="form-control"
+                    style={this.state.isValidated ? styles.notError : styles.error}
                   />
                   <br />
                   <label

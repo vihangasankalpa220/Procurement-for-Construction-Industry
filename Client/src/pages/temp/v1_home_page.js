@@ -35,7 +35,7 @@ const V1HomePage = () => {
                     
                     {/*Purchase Invoices*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Invoices - Jananath</strong></h6>
-                    <MenuLink to="/css/animations" title="xxx Management" />
+                    <MenuLink to="/banuka/dashboard" title="Purchase Invoices" />
 
                     {/*Purchase Requisition*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Requisition - Chinthaka</strong></h6>
