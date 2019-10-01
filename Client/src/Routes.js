@@ -20,7 +20,7 @@ import ViewVendorDetails from "./asiri/pages/viewVendorDetails";
 import VendorDashboard from "./asiri/pages/vendorDashboard";
 
 //imports from Banuka
-import Banuka from './components/banuka/Banuka'
+import Banuka from './banuka/components/Banuka'
 
 
 //imports from vihanga
@@ -31,6 +31,7 @@ import viewOrders from "./vihanga/pages/viewOrders";
 import ViewAllOrders from "./vihanga/pages/viewAllOrders";
 import addstock from "./vihanga/pages/addStock";
 import viewStocks from "./vihanga/pages/viewStocks";
+
 // FREE
 import AnimationPage from "./pages/AnimationPage";
 import AlertPage from "./pages/AlertPage";
@@ -83,11 +84,6 @@ import NotificationPage from './pages/NotificationPage';
 import InputGroupPage from './pages/InputGroupPage'
 import TreeviewPage from './pages/TreeviewPage'
 
-
-
-
-
-
 class Routes extends React.Component {
   render() {
     return (
@@ -102,12 +98,11 @@ class Routes extends React.Component {
           <Route exact path="/vendor/all" component={ViewAllVendors} />
           <Route exact path="/vendor/details/:id" component={ViewVendorDetails} />
           <Route exact path="/vendor/dashboard" component={VendorDashboard} />
-
           {/* end of Routs for asiri */}
 
 
           {/* Routs for jananath */}
-
+          <Route exact path="/banuka" component={Banuka}/>
           {/* end of Routs for jananath */}
 
 
@@ -133,26 +128,6 @@ class Routes extends React.Component {
         <Route exact path="/navigation" component={NavigationNavPage} />
         <Route exact path="/tables" component={TablesNavPage} />
 
-        {/* Routes of Banuka */}
-        <Route exact path="/banuka" component={Banuka}></Route>
-
-        {/* Routes of Asiri */}
-        <Route exact path="/vendor/add" component={AddVendor}></Route>
-        <Route exact path="/vendor/add" component={AddVendor} ></Route>
-        <Route exact path="/vendor/reporting" component={Reporting}></Route>
-        <Route exact path="/vendor/update" component={UpdateVendor} ></Route>
-        <Route exact path="/vendor/all" component={ViewAllVendors} ></Route>
-        <Route exact path="/vendor/details/:id" component={ViewVendorDetails}></Route>
-        <Route exact path="/vendor/dashboard" component={VendorDashboard} ></Route>
-
-          {/* Routes of Vihanga */}
-          <Route exact path="/orders/addorders" component={addorder} ></Route>
-          <Route exact path="/stocks/addstocks" component={addstock} ></Route>
-          <Route exact path='/index/stocks' component={ viewStocks } ></Route>
-          <Route exact path='/edit/:id' component={ editOrder } ></Route>
-          <Route exact path='/edits/:id' component={ editStock } ></Route>
-          <Route exact path='/index' component={ viewOrders } ></Route>
-          <Route exact path="/orders/all" component={ViewAllOrders} ></Route>
 
         {/* FREE */}
         <Route path="/addons/iframe" component={IframePage} />
