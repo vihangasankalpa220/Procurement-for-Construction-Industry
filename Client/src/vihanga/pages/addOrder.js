@@ -212,7 +212,8 @@ export default class addOrder extends Component {
                                                         value={this.state.status}
                                                         onChange={this.onChange}  >
                                                     <option value="Approved">Approved</option>
-                                                    <option value="Reject">Reject</option>
+                                                    <option value="Partially Approved">Partially Approved</option>
+                                                    <option value="Full Approved">Full Approved</option>
                                                 </select>
                                             </div>
 

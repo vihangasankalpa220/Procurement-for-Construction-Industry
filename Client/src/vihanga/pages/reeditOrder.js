@@ -8,7 +8,7 @@ import {
 } from "mdbreact";
 import SectionContainer from "../../components/sectionContainer";
 
-export default class editOrder extends Component {
+export default class reeditOrder extends Component {
 
     constructor(props) {
         super(props);
@@ -17,6 +17,7 @@ export default class editOrder extends Component {
         this.onfinal =this.onfinal.bind(this);
         this.subtot=this.subtot.bind(this);
         this.ongenqty=this.ongenqty.bind(this);
+        this.delete=this.delete.bind(this);
         this.state = {
             order_no :'',
             po_number:'',
@@ -30,7 +31,8 @@ export default class editOrder extends Component {
             bill_address:'',
             ship_address:'',
             slot:'',
-            status:''
+            status:'',
+            reason:''
         }
     }
 
@@ -65,25 +67,9 @@ export default class editOrder extends Component {
 
     onSubmit(e) {
         e.preventDefault();
-       const obj = {
-            order_no :this.state.order_no,
-            po_number:this.state.po_number,
-            currency: this.state.currency,
-            subtotal: this.state.subtotal,
-            person_name: this.state.person_name,
-            business_name:this.state.business_name,
-            qty:this.state.qty,
-            cusqty:this.state.cusqty,
-            payment:this.state.payment,
-            bill_address:this.state.bill_address,
-            ship_address:this.state.ship_address,
-            slot:this.state.slot,
-            status:this.state.status
-        };
-        axios.post('http://localhost:4000/business/update/'+this.props.match.params.id, obj)
-            .then(res => console.log(res.data));
 
-     //  this.props.history.push('/index');*/
+
+        //  this.props.history.push('/index');*/
     }
 
 
@@ -91,75 +77,86 @@ export default class editOrder extends Component {
         this.state.subtotal=this.state.cusqty*100;
     }
 
-    ongenqty(e){
+    ongenqty(e) {
         //   if(this.state.order_no==null){
         //     alert("Order No is Null");
         // }
 
-
-        if(this.state.person_name==null){
+        if (this.state.person_name == null) {
             alert("Person Name is Null");
-        }
-
-        else if(this.state.business_name==null){
+        } else if (this.state.business_name == null) {
             alert("business name is Null")
-        }
-
-        else if(this.state.bill_address==null){
+        } else if (this.state.bill_address == null) {
             alert("bill address is Null")
-        }
-
-        else if(this.state.ship_address==null){
+        } else if (this.state.ship_address == null) {
             alert("ship address is Null")
-        }
-
-        else if(this.state.slot==null){
+        } else if (this.state.slot == null) {
             alert("slot is Null")
-        }
-
-
-
-        else  if(this.state.cusqty==null){
+        } else if (this.state.cusqty == null) {
             alert("quantity is null please enter quantity");
-        }
-        else if(this.state.qty<this.state.cusqty){
-          //  this.toggle(2);
-          //  this.onfinal();
+        } else if (this.state.qty < this.state.cusqty) {
+            //  this.toggle(2);
+            //  this.onfinal();
             alert("quantity is more than the system stock");
 
 
-        }
-
-        else{
+        } else {
             const obj = {
-                order_no :this.state.order_no,
-                po_number:this.state.po_number,
+                order_no: this.state.order_no,
+                po_number: this.state.po_number,
                 currency: this.state.currency,
                 subtotal: this.state.subtotal,
                 person_name: this.state.person_name,
-                business_name:this.state.business_name,
-                qty:this.state.qty,
-                cusqty:this.state.cusqty,
-                payment:this.state.payment,
-                bill_address:this.state.bill_address,
-                ship_address:this.state.ship_address,
-                slot:this.state.slot,
-                status:this.state.status
+                business_name: this.state.business_name,
+                qty: this.state.qty,
+                cusqty: this.state.cusqty,
+                payment: this.state.payment,
+                bill_address: this.state.bill_address,
+                ship_address: this.state.ship_address,
+                slot: this.state.slot,
+                status: this.state.status,
+                reason:this.state.reason
             };
-            axios.post('http://localhost:4000/business/update/'+this.props.match.params.id, obj)
-                .then(res => console.log(res.data))
-                .catch(err=>console.log(err.data));
+            axios.post('http://localhost:4000/reject/add', obj)
+                .then(res => console.log(res.data));
 
-            this.props.history.push('/index');
+            this.setState({
+                order_no :'',
+                po_number:'',
+                currency: '',
+                subtotal: '',
+                person_name:'',
+                business_name:'',
+                qty:'',
+                cusqty:'',
+                payment:'',
+                bill_address:'',
+                ship_address:'',
+                slot:'',
+                status:'',
+                reason:''
+            })
+
+
 
         }
     }
 
 
-    onfinal(e) {
-     //  e.preventDefault();
-        this.ongenqty();
+    delete() {
 
+        axios.get('http://localhost:4000/business/delete/'+this.props.match.params.id)
+            .then(console.log('Deleted'))
+            .catch(err => console.log(err))
+        this.props.history.push('/indexs');
+        window.location.reload();
+    }
+
+
+    onfinal(e) {
+        //  e.preventDefault();
+        this.ongenqty();
+        this.delete();
     }
 
     state = {
@@ -171,13 +168,13 @@ export default class editOrder extends Component {
 
 
 
-        toggle = nr => () => {
-            let modalNumber = "modal" + nr;
-            this.setState({
-                [modalNumber]: !this.state[modalNumber]
-            });
+    toggle = nr => () => {
+        let modalNumber = "modal" + nr;
+        this.setState({
+            [modalNumber]: !this.state[modalNumber]
+        });
 
-        };
+    };
 
 
 
@@ -192,7 +189,7 @@ export default class editOrder extends Component {
                     <MDBContainer>
                         <MDBRow>
                             <MDBCol md="8" className="mx-auto">
-                                <SectionContainer header="Edit Order">
+                                <SectionContainer header="Reject Order Form">
                                     <form onSubmit={this.onSubmit}>
 
                                         <div className="form-group">
@@ -211,7 +208,7 @@ export default class editOrder extends Component {
 
                                         <div className="form-group">
                                             <label htmlFor="currency">currency</label>
-                                            <select disabled={false} type="text" name="currency"
+                                            <select disabled={true} type="text" name="currency"
                                                     className="form-control"
                                                     placeholder="Enter currency"
                                                     value={this.state.currency}
@@ -234,7 +231,7 @@ export default class editOrder extends Component {
 
                                         <div className="form-group">
                                             <label htmlFor="person_name">person_name</label>
-                                            <input type="text" className="form-control" name="person_name"
+                                            <input disabled={true} type="text" className="form-control" name="person_name"
                                                    placeholder="person_name"   value={this.state.person_name}
                                                    onChange={this.onChange} required/>
                                         </div>
@@ -242,7 +239,7 @@ export default class editOrder extends Component {
 
                                         <div className="form-group ">
                                             <label htmlFor="business_name">business_name</label>
-                                            <input type="text" className="form-control" name="business_name"
+                                            <input disabled={true} type="text" className="form-control" name="business_name"
                                                    placeholder="business_name"   value={this.state.business_name}
                                                    onChange={this.onChange} required/>
                                         </div>
@@ -256,14 +253,14 @@ export default class editOrder extends Component {
 
                                         <div className="form-group ">
                                             <label htmlFor="cusqty">Requested quantity</label>
-                                            <input type="text" className="form-control" name="cusqty"
+                                            <input disabled={true} type="text" className="form-control" name="cusqty"
                                                    placeholder="cusqty"   value={this.state.cusqty}
                                                    onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group">
                                             <label htmlFor="payment">payment</label>
-                                            <select disabled={false} type="text" name="payment"
+                                            <select disabled={true}  type="text" name="payment"
                                                     className="form-control"
                                                     placeholder="Enter payment"
                                                     value={this.state.payment}
@@ -277,14 +274,14 @@ export default class editOrder extends Component {
 
                                         <div className="form-group ">
                                             <label htmlFor="bill_address">bill_address</label>
-                                            <textarea type="text" className="form-control" name="bill_address"
+                                            <textarea disabled={true} type="text" className="form-control" name="bill_address"
                                                       placeholder="bill_address"   value={this.state.bill_address}
                                                       onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group ">
                                             <label htmlFor="ship_address">ship_address</label>
-                                            <textarea type="text" className="form-control"  name="ship_address"
+                                            <textarea disabled={true} type="text" className="form-control"  name="ship_address"
                                                       placeholder="ship_address"   value={this.state.ship_address}
                                                       onChange={this.onChange} required/>
                                         </div>
@@ -292,14 +289,14 @@ export default class editOrder extends Component {
 
                                         <div className="form-group ">
                                             <label htmlFor="slot">slot</label>
-                                            <input type="text" className="form-control"  name="slot"
+                                            <input disabled={true} type="text" className="form-control"  name="slot"
                                                    placeholder="slot"   value={this.state.slot}
                                                    onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group">
                                             <label htmlFor="status">status</label>
-                                            <select disabled={false} type="text"  name="status"
+                                            <select disabled={true} type="text"  name="status"
                                                     className="form-control"
                                                     placeholder="Enter status"
                                                     value={this.state.status}
@@ -310,6 +307,14 @@ export default class editOrder extends Component {
                                             </select>
                                         </div>
 
+                                        <div className="form-group ">
+                                            <label htmlFor="reason">reason</label>
+                                            <textarea  type="text" className="form-control" name="reason"
+                                                   placeholder="reason"   value={this.state.reason}
+                                                   onChange={this.onChange} required/>
+                                        </div>
+
+
                                         <input type="submit"
                                                value="Save Changes"
                                                className="btn btn-primary" onClick={this.toggle(2)}/>
@@ -318,13 +323,13 @@ export default class editOrder extends Component {
                                         <MDBModal isOpen={this.state.modal2} toggle={this.toggle(2)}>
                                             <MDBModalHeader toggle={this.toggle(2)}></MDBModalHeader>
                                             <MDBModalBody>
-                                             Do You Really want to save edited content
+                                                Do You Really want to save edited content
                                             </MDBModalBody>
                                             <MDBModalFooter>
                                                 <MDBBtn color="secondary" onClick={this.toggle(2)}>
                                                     Close
                                                 </MDBBtn>
-                                                <MDBBtn color="primary" onClick={this.onfinal}>Save changes</MDBBtn>
+                                                <MDBBtn color="primary" onClick={this.onfinal}>Confirm Reject</MDBBtn>
                                             </MDBModalFooter>
                                         </MDBModal>
 

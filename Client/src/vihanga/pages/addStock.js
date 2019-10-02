@@ -12,29 +12,39 @@ import SectionContainer from "../../components/sectionContainer";
 
 export default class addStock extends Component {
 
+
+
+
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.subtot=this.subtot.bind(this);
 
         this.state = {
 
             stock_no: '',
             currency: 'rupeese',
-            subtotal: '',
+            subtotal: this.subtot(),
             qty: '',
             payment: 'cash'
         }
 
     }
 
+
+
     onChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    subtot(e){
+        return 100;
+    }
 
     onSubmit(e) {
         e.preventDefault();
+
         const obj = {
             stock_no :this.state.stock_no,
             currency: this.state.currency,
@@ -48,7 +58,7 @@ export default class addStock extends Component {
         this.setState({
             stock_no :'',
             currency: '',
-            subtotal: '',
+            subtotal: this.subtot(),
             qty:'',
             payment:''
         })
@@ -82,7 +92,7 @@ export default class addStock extends Component {
                     <MDBContainer>
                         <MDBRow>
                             <MDBCol md="8" className="mx-auto">
-                                <SectionContainer header="Add New Order">
+                                <SectionContainer header="Add New Stock">
                                     <form onSubmit={this.onSubmit}>
 
                                         <div className="form-group">
@@ -113,7 +123,7 @@ export default class addStock extends Component {
                                             <label htmlFor="subtotal">subtotal</label>
                                             <input type="text" className="form-control" name="subtotal"
                                                    placeholder="subtotal"   value={this.state.subtotal}
-                                                   onChange={this.onChange} required/>
+                                                   onChange={this.onChange} />
                                         </div>
 
 
@@ -151,7 +161,7 @@ export default class addStock extends Component {
                                             side
                                             position="top-right"
                                         >
-                                            <MDBModalHeader toggle={this.toggle(6)}>Modal title</MDBModalHeader>
+                                            <MDBModalHeader toggle={this.toggle(6)}></MDBModalHeader>
                                             <MDBModalBody>
                                                 New Stock Added Succesfully!
                                             </MDBModalBody>

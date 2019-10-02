@@ -63,6 +63,18 @@ export default class editStock extends Component {
     }
 
 
+    onclick(type){
+        this.setState(prevState => {
+            return {order_no: type === 'add' ? prevState.order_no + 1: prevState.order_no - 1}
+        });
+    }
+
+    handleClick = () => {
+        this.setState(prevState => {
+            return {order_no: prevState.order_no + 1}
+        })
+    }
+
 
     onSubmit(e) {
         e.preventDefault();
@@ -89,53 +101,89 @@ export default class editStock extends Component {
     }
 
    ongenqty(e){
-        if(this.state.qty>=this.state.cusqty){
-            this.onfinal();
-            this.toggle(2);
+        if(this.state.order_no==null){
+           alert("Order No is Null");
+       }
+        else  if(this.state.po_number==null){
+           alert("Po No is Null");
+       }
+
+        else if(this.state.person_name==null){
+            alert("Person Name is Null");
         }
-        else{
+
+        else if(this.state.business_name==null){
+            alert("business name is Null")
+        }
+
+        else if(this.state.bill_address==null){
+            alert("bill address is Null")
+        }
+
+        else if(this.state.ship_address==null){
+            alert("ship address is Null")
+        }
+
+        else if(this.state.slot==null){
+            alert("slot is Null")
+        }
+
+       else  if(this.state.cusqty==null){
+            alert("quantity is null please enter quantity");
+        }
+        else if(this.state.qty<=this.state.cusqty){
             alert("quantity is more than the system stock");
+        }
+
+        else{
+
+            this.onfinal();
+            this.toggle();
         }
    }
 
+
+
+
+
+
     onfinal(e) {
-       // e.preventDefault();
-       // this.ongenqty();
+        // e.preventDefault();
+        // this.ongenqty();
         const obj = {
-            order_no :this.state.order_no,
-            po_number:this.state.po_number,
+            order_no: this.state.order_no,
+            po_number: this.state.po_number,
             currency: this.state.currency,
             subtotal: this.state.subtotal,
             person_name: this.state.person_name,
-            business_name:this.state.business_name,
-            qty:this.state.qty,
-            cusqty:this.state.cusqty,
-            payment:this.state.payment,
-            bill_address:this.state.bill_address,
-            ship_address:this.state.ship_address,
-            slot:this.state.slot,
-            status:this.state.status
+            business_name: this.state.business_name,
+            qty: this.state.qty,
+            cusqty: this.state.cusqty,
+            payment: this.state.payment,
+            bill_address: this.state.bill_address,
+            ship_address: this.state.ship_address,
+            slot: this.state.slot,
+            status: this.state.status
         };
+            axios.post('http://localhost:4000/business/add', obj)
+                .then(res => console.log(res.data));
 
-        axios.post('http://localhost:4000/business/add', obj)
-            .then(res => console.log(res.data));
-
-        this.setState({
-            order_no :'',
-            po_number:'',
-            currency: '',
-            subtotal: '',
-            person_name:'',
-            business_name:'',
-            qty:'',
-            cusqty:'',
-            payment:'',
-            bill_address:'',
-            ship_address:'',
-            slot:'',
-            status:''
-        })
-    }
+            this.setState({
+                order_no: '',
+                po_number: '',
+                currency: '',
+                subtotal: '',
+                person_name: '',
+                business_name: '',
+                qty: '',
+                cusqty: '',
+                payment: '',
+                bill_address: '',
+                ship_address: '',
+                slot: '',
+                status: ''
+            })
+        }
 
     state = {
 
@@ -174,14 +222,14 @@ export default class editStock extends Component {
                                             <label htmlFor="stock_no">stock_no</label>
                                             <input disabled={true} type="text" className="form-control" name="stock_no"
                                                    placeholder="stock_no"   value={this.state.stock_no}
-                                                   onChange={this.onChange}/>
+                                                   onChange={this.onChange} />
                                         </div>
 
 
                                         <div className="form-group">
                                             <label htmlFor="order_no">order_no</label>
                                             <input type="text" className="form-control" name="order_no"
-                                                   placeholder="order_no"   value={this.state.order_no}
+                                                   placeholder="order_no"   value={this.state.order_no} onClick={this.onclick.bind(this, 'add')}
                                                    onChange={this.onChange}/>
                                         </div>
 
@@ -189,7 +237,7 @@ export default class editStock extends Component {
                                             <label htmlFor="po_number">po_number</label>
                                             <input type="text" className="form-control" name="po_number"
                                                    placeholder="po_number"   value={this.state.po_number}
-                                                   onChange={this.onChange}/>
+                                                   onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group">
@@ -219,7 +267,7 @@ export default class editStock extends Component {
                                             <label htmlFor="person_name">person_name</label>
                                             <input type="text" className="form-control" name="person_name"
                                                    placeholder="person_name"   value={this.state.person_name}
-                                                   onChange={this.onChange}/>
+                                                   onChange={this.onChange} required/>
                                         </div>
 
 
@@ -227,7 +275,7 @@ export default class editStock extends Component {
                                             <label htmlFor="business_name">business_name</label>
                                             <input type="text" className="form-control" name="business_name"
                                                    placeholder="business_name"   value={this.state.business_name}
-                                                   onChange={this.onChange}/>
+                                                   onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group ">
@@ -241,7 +289,7 @@ export default class editStock extends Component {
                                             <label htmlFor="cusqty">Customer Requested quantity</label>
                                             <input type="text" className="form-control" name="cusqty"
                                                    placeholder="cusqty"   value={this.state.cusqty}
-                                                   onChange={this.onChange}/>
+                                                   onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group">
@@ -262,14 +310,14 @@ export default class editStock extends Component {
                                             <label htmlFor="bill_address">bill_address</label>
                                             <textarea type="text" className="form-control" name="bill_address"
                                                       placeholder="bill_address"   value={this.state.bill_address}
-                                                      onChange={this.onChange} />
+                                                      onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group ">
                                             <label htmlFor="ship_address">ship_address</label>
                                             <textarea type="text" className="form-control"  name="ship_address"
                                                       placeholder="ship_address"   value={this.state.ship_address}
-                                                      onChange={this.onChange} />
+                                                      onChange={this.onChange} required/>
                                         </div>
 
 
@@ -277,7 +325,7 @@ export default class editStock extends Component {
                                             <label htmlFor="slot">slot</label>
                                             <input type="text" className="form-control"  name="slot"
                                                    placeholder="slot"   value={this.state.slot}
-                                                   onChange={this.onChange}/>
+                                                   onChange={this.onChange} required/>
                                         </div>
 
                                         <div className="form-group">
@@ -294,17 +342,17 @@ export default class editStock extends Component {
 
                                         <input type="submit"
                                                value="Save Changes"
-                                               className="btn btn-primary" onClick={this.ongenqty}/>
+                                               className="btn btn-primary" onClick={this.toggle(2)}/>
 
 
                                         <MDBModal isOpen={this.state.modal2} toggle={this.toggle(2)}>
                                             <MDBModalHeader toggle={this.toggle(2)}></MDBModalHeader>
                                             <MDBModalBody>
-                                                Order Created Successfully
+                                             Do you really need to add this stock now
                                             </MDBModalBody>
                                             <MDBModalFooter>
 
-                                                <MDBBtn color="primary" >Okay</MDBBtn>
+                                                <MDBBtn color="primary"  onClick={this.ongenqty}>Yes</MDBBtn>
                                             </MDBModalFooter>
                                         </MDBModal>
 

@@ -8,9 +8,11 @@ class TableRow extends Component {
 
   constructor(props) {
         super(props);
-        this.delete = this.delete.bind(this);
+      this.delete = this.delete.bind(this);
     }
+
     delete() {
+
         axios.get('http://localhost:4000/business/delete/'+this.props.obj._id)
             .then(console.log('Deleted'))
         window.location.reload()
@@ -43,7 +45,6 @@ class TableRow extends Component {
         alert("This event is fired after the modal is closed.");
     };
 
-
   render() {
     return (
         <tr>
@@ -67,7 +68,11 @@ class TableRow extends Component {
               <Link to={"/edit/"+this.props.obj._id}  style={{width:113}}  className="btn btn-primary">Edit</Link>
 
 
-                <button onClick={this.delete} style={{ marginLeft:-1}}  className="btn btn-danger">Delete</button>
+                <Link to={"/reedit/"+this.props.obj._id} style={{ marginLeft:-1}} className="btn btn-danger">Reject</Link>
+
+
+
+
 
 
 
