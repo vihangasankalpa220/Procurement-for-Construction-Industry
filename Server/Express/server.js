@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const config = require('./DB.js');
 const businessRoute = require('./routes/business.route');
 const stockssRoute = require('./routes/stock.route');
+const rejectsRoute=require('./routes/reject.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -23,6 +24,7 @@ app.use('/business', businessRoute);
 
 app.use('/stock', stockssRoute);
 
+app.use('/reject',rejectsRoute);
 
 
 app.listen(PORT, function(){
