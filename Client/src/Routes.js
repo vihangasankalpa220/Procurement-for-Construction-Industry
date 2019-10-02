@@ -19,11 +19,8 @@ import ViewAllVendors from "./asiri/pages/viewAllVendors";
 import ViewVendorDetails from "./asiri/pages/viewVendorDetails";
 import VendorDashboard from "./asiri/pages/vendorDashboard";
 
-import Banuka from './banuka/components/Banuka';
-import BanukaDashboard from './banuka/components/Dashboard';
-import BanukaCreate from './banuka/components/CreateInvoice'
-import BanukaViewInvoices from './banuka/components/ViewInvoices'
-
+//imports from Banuka
+import Banuka from './components/banuka/Banuka'
 
 
 //imports from vihanga
@@ -34,7 +31,8 @@ import viewOrders from "./vihanga/pages/viewOrders";
 import ViewAllOrders from "./vihanga/pages/viewAllOrders";
 import addstock from "./vihanga/pages/addStock";
 import viewStocks from "./vihanga/pages/viewStocks";
-
+import reeditOrder from "./vihanga/pages/reeditOrder";
+import viewRejectOrders from "./vihanga/pages/viewRejectOrders";
 // FREE
 import AnimationPage from "./pages/AnimationPage";
 import AlertPage from "./pages/AlertPage";
@@ -87,6 +85,12 @@ import NotificationPage from './pages/NotificationPage';
 import InputGroupPage from './pages/InputGroupPage'
 import TreeviewPage from './pages/TreeviewPage'
 
+
+
+
+
+
+
 class Routes extends React.Component {
   render() {
     return (
@@ -101,15 +105,13 @@ class Routes extends React.Component {
           <Route exact path="/vendor/all" component={ViewAllVendors} />
           <Route exact path="/vendor/details/:id" component={ViewVendorDetails} />
           <Route exact path="/vendor/dashboard" component={VendorDashboard} />
+
           {/* end of Routs for asiri */}
 
 
-           {/* Routes of Banuka */}
-        <Route exact path="/banuka/dashboard" component={BanukaDashboard}></Route>
-        <Route exact path="/banuka/create" component={BanukaCreate}></Route>
-        <Route exact path="/banuka/view" component={BanukaViewInvoices}></Route>
-          {/* End of Routes of Banuka */}
+          {/* Routs for jananath */}
 
+          {/* end of Routs for jananath */}
 
 
           {/* Routs for vihanga */}
@@ -117,14 +119,15 @@ class Routes extends React.Component {
           <Route exact path="/stocks/addstocks" component={addstock} />
           <Route exact path='/index/stocks' component={ viewStocks } />
           <Route exact path='/edit/:id' component={ editOrder } />
+          <Route exact path='/reedit/:id' component={ reeditOrder } />
           <Route exact path='/edits/:id' component={ editStock } />
           <Route exact path='/index' component={ viewOrders } />
+          <Route exact path='/indexs' component={ viewRejectOrders } />
           <Route exact path="/orders/all" component={ViewAllOrders} />
           {/* end of Routs for vihanga */}
 
 
 
-        {/* FREE */}
         <Route exact path="/" component={HomePage} />
         <Route exact path="/addons" component={AddonsNavPage} />
         <Route exact path="/advanced" component={AdvancedNavPage} />
@@ -134,6 +137,31 @@ class Routes extends React.Component {
         <Route exact path="/modals" component={ModalsNavPage} />
         <Route exact path="/navigation" component={NavigationNavPage} />
         <Route exact path="/tables" component={TablesNavPage} />
+
+        {/* Routes of Banuka */}
+        <Route exact path="/banuka" component={Banuka}></Route>
+
+        {/* Routes of Asiri */}
+        <Route exact path="/vendor/add" component={AddVendor}></Route>
+        <Route exact path="/vendor/add" component={AddVendor} ></Route>
+        <Route exact path="/vendor/reporting" component={Reporting}></Route>
+        <Route exact path="/vendor/update" component={UpdateVendor} ></Route>
+        <Route exact path="/vendor/all" component={ViewAllVendors} ></Route>
+        <Route exact path="/vendor/details/:id" component={ViewVendorDetails}></Route>
+        <Route exact path="/vendor/dashboard" component={VendorDashboard} ></Route>
+
+          {/* Routes of Vihanga */}
+          <Route exact path="/orders/addorders" component={addorder} ></Route>
+          <Route exact path="/stocks/addstocks" component={addstock} ></Route>
+          <Route exact path='/index/stocks' component={ viewStocks } ></Route>
+          <Route exact path='/edit/:id' component={ editOrder } ></Route>
+          <Route exact path='/reedit/:id' component={ reeditOrder } ></Route>
+          <Route exact path='/edits/:id' component={ editStock } ></Route>
+          <Route exact path='/index' component={ viewOrders } ></Route>
+          <Route exact path='/indexs' component={ viewRejectOrders } />
+          <Route exact path="/orders/all" component={ViewAllOrders} ></Route>
+
+        {/* FREE */}
         <Route path="/addons/iframe" component={IframePage} />
         <Route path="/addons/edge-header" component={EdgeHeaderPage} />
         <Route path="/addons/notifications" component={NotificationPage} />
@@ -195,4 +223,3 @@ class Routes extends React.Component {
 }
 
 export default Routes;
-
