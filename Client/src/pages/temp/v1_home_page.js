@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   MDBEdgeHeader,
@@ -35,7 +34,7 @@ const V1HomePage = () => {
                     
                     {/*Purchase Invoices*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Invoices - Jananath</strong></h6>
-                    <MenuLink to="/banuka/dashboard" title="Purchase Invoices" />
+                    <MenuLink to="/css/animations" title="xxx Management" />
 
                     {/*Purchase Requisition*/}
                     <h6 className="mt-3 grey-text"><strong>Purchase Requisition - Chinthaka</strong></h6>
@@ -49,6 +48,7 @@ const V1HomePage = () => {
                     <MenuLink to="/edit/:id" title="Edit Orders" />
                     <MenuLink to="/edits/:id" title="Edit Stocks" />
                     <MenuLink to="/index" title="View Orders" />
+                    <MenuLink to="/indexs" title="View Rejected Orders"/>
 
                   </ul>
                 </MDBJumbotron>
@@ -61,4 +61,3 @@ const V1HomePage = () => {
 };
 
 export default V1HomePage;
-
