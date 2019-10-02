@@ -7,7 +7,7 @@ let Business = new Schema({
     type:String
   },
   order_no :{
-    type:String
+    type:Number,
   },
   po_number:{
     type:String
